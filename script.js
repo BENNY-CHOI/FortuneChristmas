@@ -42,6 +42,8 @@ let currentTrack = 0;
 
 audioPlayer.addEventListener("ended", () => {
   currentTrack = (currentTrack + 1) % tracks.length;
+  audioPlayer.src = tracks[currentTrack].src;
+  audioPlayer.play();
 });
 
 // 배경 음악 플레이어바 초기화
