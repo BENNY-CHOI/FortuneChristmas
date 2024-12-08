@@ -22,18 +22,18 @@ const audioPlayer = document.getElementById("audio-player");
 const playlist = document.getElementById("playlist");
 
 const tracks = [
-  // 노래1: Canon and Variation - Twin Musicom
-  // 노래2: we Wish You a Merry Christmas - Twin Musicom
+  // 노래1: We Wish You A Merry Christmas - DJ Williams
+  // 노래2: Silent Night - The Soundlings
   // 노래3: Jingle Bells - Kevin MacLeod
   {
     src: "asset/song1.mp3",
-    name: "Canon and Variation",
-    artist: "Twin Musicom",
+    name: "We Wish You A Merry Christmas",
+    artist: "DJ Williams",
   },
   {
     src: "asset/song2.mp3",
-    name: "we Wish You a Merry Christmas",
-    artist: "Twin Musicom",
+    name: "Silent Night",
+    artist: "The Soundlings",
   },
   { src: "asset/song3.mp3", name: "ingle Bells", artist: "Kevin MacLeod" },
 ];
