@@ -7,8 +7,7 @@ export default async function handler(req, res) {
     // 프롬포트 생성 코드
     const prompt = `
     이 어린이는 ${keywords.join(", ")} 키워드를 가진 아이입니다. 
-    산타할아버지의 말투로, 크리스마스에 어울리는 메시지를 작성해 주세요. 
-    메시지에는 올 한 해의 수고를 인정하고, 다음 해를 축하하는 따뜻한 말을 포함해 주세요.
+    산타할아버지의 말투로, 올 한 해의 수고를 인정하고, 다음 해를 축하하는 따뜻한 말을 작성해주세요. (400자이내)
     `;
 
     try {
@@ -36,3 +35,5 @@ export default async function handler(req, res) {
     res.status(405).json({ error: "Method not allowed" });
   }
 }
+
+console.log("API Key:", process.env.OPENAI_API_KEY); // 디버깅 후 삭제
