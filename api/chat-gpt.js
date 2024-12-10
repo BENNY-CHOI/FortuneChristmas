@@ -7,7 +7,8 @@ export default async function handler(req, res) {
     // 프롬프트 생성
     const prompt = `
     이 어린이는 ${keywords.join(", ")} 키워드를 가진 아이입니다. 
-    산타할아버지의 말투로, 올 한 해의 수고를 인정하고, 다음 해를 축하하는 따뜻한 말을 작성해 주세요. (300자 이내)
+    산타할아버지의 말투로, 크리스마스에 어울리는 메시지를 작성해 주세요. 
+메시지에는 올 한 해의 수고를 인정하고, 다음 해를 축하하는 따뜻한 말을 포함해 주세요.(300자 이내)
     `;
 
     try {
@@ -25,7 +26,7 @@ export default async function handler(req, res) {
               { role: "system", content: "You are Santa Claus." },
               { role: "user", content: prompt },
             ],
-            max_tokens: 100,
+            max_tokens: 400,
             temperature: 0.7,
           }),
         }
