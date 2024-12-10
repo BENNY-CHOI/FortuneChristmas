@@ -50,6 +50,24 @@ html {
   border-radius: 10px;
   text-align: center;
   position: relative;
+  max-width: 80%;
+  max-height: 90%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#result-message {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #333;
+  white-space: pre-wrap;
+  flex-grow: 1;
+}
+
+.keywords {
+  margin-bottom: 20px;
 }
 
 #close-popup {

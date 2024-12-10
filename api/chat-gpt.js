@@ -20,7 +20,7 @@ export default async function handler(req, res) {
             Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
           },
           body: JSON.stringify({
-            model: "gpt-3.5-turbo", // 최신 모델로 변경
+            model: "gpt-3.5-turbo", // text-davinci-003모델 지원 중단
             messages: [
               { role: "system", content: "You are Santa Claus." },
               { role: "user", content: prompt },
@@ -33,7 +33,6 @@ export default async function handler(req, res) {
 
       const data = await response.json();
 
-      // OpenAI 응답 검증
       if (!data || !data.choices || data.choices.length === 0) {
         throw new Error("Invalid response from OpenAI API");
       }

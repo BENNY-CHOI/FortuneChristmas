@@ -82,12 +82,19 @@ submitButton.addEventListener("click", async () => {
     });
 
     const data = await response.json();
-    loadingMessage.style.display = "none"; // 로딩 메시지 숨기기
-    resultMessage.textContent = data.message; // 결과 메시지 표시
+    // 로딩 메시지 숨기기
+    loadingMessage.style.display = "none";
+
+    // 키워드와 버튼 숨기기
+    keywordsContainer.style.display = "none";
+    submitButton.style.display = "none";
+    // 결과 메시지 표시
+    resultMessage.textContent = data.message;
   } catch (error) {
     loadingMessage.style.display = "none";
     resultMessage.textContent =
       "메시지를 가져오는 데 실패했습니다. 다시 시도해주세요!";
+
     console.error(error);
   }
 });
@@ -99,8 +106,13 @@ showPopup.addEventListener("click", () => {
   popup.style.display = "flex";
 });
 
+// 키워드와 버튼 복원 로직
 closePopup.addEventListener("click", () => {
   popup.style.display = "none";
+
+  keywordsContainer.style.display = "flex";
+  submitButton.style.display = "inline-block";
+  resultMessage.textContent = "";
 });
 
 // 배경음악 재생 기능
