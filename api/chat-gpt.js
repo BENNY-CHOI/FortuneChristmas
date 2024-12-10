@@ -27,12 +27,10 @@ export default async function handler(req, res) {
       });
 
       const data = await response.json();
-      const message = data.choices[0].text.trim();
-
-      res.status(200).json({ message });
+      res.status(200).json({ message: data.choices[0].text.trim() });
     } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: "Failed to fetch ChatGPT response." });
+      console.error("API Error:", error);
+      res.status(500).json({ error: "Failed to fetch OpenAI API response." });
     }
   } else {
     res.status(405).json({ error: "Method not allowed" });
