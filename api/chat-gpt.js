@@ -25,8 +25,18 @@ export default async function handler(req, res) {
         }),
       });
 
+      // OpenAI 응답 디버깅
       const data = await response.json();
-      res.status(200).json({ message: data.choices[0].text.trim() });
+      console.log("OpenAI API Response:", data); // 응답 로그 출력
+
+      if (!data.choices || data.choices.length === 0) {
+        throw new Error(
+          "Invalid response from OpenAI API: choices array is empty or undefined"
+        );
+      }
+
+      const message = data.choices[0].text.trim();
+      res.status(200).json({ message });
     } catch (error) {
       console.error("API Error:", error);
       res.status(500).json({ error: "Failed to fetch OpenAI API response." });
@@ -35,5 +45,3 @@ export default async function handler(req, res) {
     res.status(405).json({ error: "Method not allowed" });
   }
 }
-
-console.log("API Key:", process.env.OPENAI_API_KEY); // 디버깅 후 삭제
