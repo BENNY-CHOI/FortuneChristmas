@@ -167,16 +167,16 @@ const tracks = [
   // 노래2: Silent Night - The Soundlings
   // 노래3: Jingle Bells - Kevin MacLeod
   {
-    src: "asset/song1.mp3",
+    src: "/asset/song1.mp3",
     name: "We Wish You A Merry Christmas",
     artist: "DJ Williams",
   },
   {
-    src: "asset/song2.mp3",
+    src: "/asset/song2.mp3",
     name: "Silent Night",
     artist: "The Soundlings",
   },
-  { src: "asset/song3.mp3", name: "ingle Bells", artist: "Kevin MacLeod" },
+  { src: "/asset/song3.mp3", name: "ingle Bells", artist: "Kevin MacLeod" },
 ];
 
 let currentTrack = 0;
