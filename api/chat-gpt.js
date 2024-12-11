@@ -5,18 +5,20 @@ export default async function handler(req, res) {
     const { keywords } = req.body;
 
     // 키워드가 모두 영어인지 확인
-    const isEnglish = keywords.every(
-      (keyword) => /^[A-Za-z\s]+$/.test(keyword) // 영어로만 이루어졌는지 확인
+    const isEnglish = keywords.every((keyword) =>
+      /^[A-Za-z\s]+$/.test(keyword)
     );
 
     // 프롬프트 생성
     const prompt = isEnglish
-      ? `This child has the traits of ${keywords.join(
+      ? `This child possesses the traits of ${keywords.join(
           ", "
-        )}. In Santa Claus's warm and encouraging tone, praise this child for their achievements and efforts this year. Also, include a message of encouragement for the upcoming year. Please write the message in about 300 characters.`
+        )}. Using Santa Claus's warm and encouraging tone, craft a message that praises the child's achievements and efforts throughout the year. 
+        Additionally, include an encouraging note for the upcoming year. Limit the message to approximately 400 characters.`
       : `이 어린이는 ${keywords.join(
           ", "
-        )}의 특성을 가진 아이입니다. 산타할아버지의 따뜻하고 격려하는 말투로, 이 아이가 올해 이룬 업적과 노력을 칭찬해주세요. 또한, 다가오는 해를 위한 격려의 메시지를 포함해주세요. 메시지는 약 300자 내외로 작성해 주세요.`;
+        )}의 특성을 가진 아이입니다. 산타할아버지처럼 따뜻하고 격려하는 말투로, 이 아이가 올해 이룬 업적과 노력을 칭찬해주세요. 
+        또한, 다가오는 해를 위한 격려의 메시지를 포함해주세요. 메시지는 약 400자 내외로 작성해 주세요.`;
 
     try {
       const response = await fetch(
