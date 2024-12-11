@@ -66,6 +66,21 @@ html {
   flex-grow: 1;
 }
 
+#submit-keywords {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background-color: #ee3f3f;
+  color: aliceblue;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#submit-keywords:hover {
+  background-color: #e05a50;
+}
+
 .keywords {
   margin-bottom: 20px;
 }
@@ -89,15 +104,15 @@ html {
 .keywords button {
   padding: 10px;
   border: 1px solid #ddd;
-  background-color: #f9f9f9;
+  background-color: #60dbb074;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 15px;
 }
 
 .keywords button.selected {
-  background-color: #007bff;
+  background-color: #34b11b;
   color: white;
-  border-color: #0056b3;
+  border-color: #97eaa6;
 }
 
 .music-player {

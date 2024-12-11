@@ -12,48 +12,86 @@ const submitButton = document.getElementById("submit-keywords");
 const loadingMessage = document.getElementById("loading-message");
 const resultMessage = document.getElementById("result-message");
 
-// 키워드 리스트
-const keywordList = [
-  "모험심이 강한",
-  "다정한",
-  "경계심이 강한",
-  "야심만만한",
-  "분석적인",
-  "고마워할 줄 아는",
-  "대범한",
-  "침착한",
-  "조심성이 많은",
-  "중심이 잡힌",
-  "매력적인",
-  "자신감 있는",
-  "협조적인",
-  "용기있는",
-  "창조적인",
-  "결단력 있는",
-  "조직적인",
-  "객관적인",
-  "순종적인",
-  "중독에 빠지는",
-  "반사회적인",
-  "강박적인",
-  "거만한",
-  "위선적인",
-  "부주의한",
-  "우유부단한",
-  "웅통성이 없는",
-  "오만한",
-  "사서 걱정하는",
-  "움츠러드는",
-  "일중독인",
-];
+//키워드 리스트 (한/영 지원)
+const keywordList = {
+  ko: [
+    "모험심이 강한",
+    "다정한",
+    "경계심이 강한",
+    "야심만만한",
+    "분석적인",
+    "고마워할 줄 아는",
+    "대범한",
+    "침착한",
+    "조심성이 많은",
+    "중심이 잡힌",
+    "매력적인",
+    "자신감 있는",
+    "협조적인",
+    "용기있는",
+    "창조적인",
+    "결단력 있는",
+    "조직적인",
+    "객관적인",
+    "순종적인",
+    "중독에 빠지는",
+    "반사회적인",
+    "강박적인",
+    "거만한",
+    "위선적인",
+    "부주의한",
+    "우유부단한",
+    "웅통성이 없는",
+    "오만한",
+    "사서 걱정하는",
+    "움츠러드는",
+    "일중독인",
+  ],
+  en: [
+    "Adventurous",
+    "Affectionate",
+    "Cautious",
+    "Ambitious",
+    "Analytical",
+    "Appreciative",
+    "Bold",
+    "Calm",
+    "Careful",
+    "Centered",
+    "Charming",
+    "Confident",
+    "Cooperative",
+    "Courageous",
+    "Creative",
+    "Decisive",
+    "Organized",
+    "Objective",
+    "Submissive",
+    "Addictive",
+    "Antisocial",
+    "Compulsive",
+    "Arrogant",
+    "Hypocritical",
+    "Careless",
+    "Indecisive",
+    "Inflexible",
+    "Prideful",
+    "Worrying",
+    "Withdrawn",
+    "Workaholic",
+  ],
+};
+
+// Detect language from HTML tag
+const lang = document.documentElement.lang;
 
 // 키워드 동적 생성
-keywordList.forEach((keyword) => {
+keywordList[lang].forEach((keyword) => {
   const button = document.createElement("button");
   button.textContent = keyword;
   button.classList.add("keyword-button");
   button.addEventListener("click", () => {
-    button.classList.toggle("selected"); // 키워드 선택/해제
+    button.classList.toggle("selected");
   });
   keywordsContainer.appendChild(button);
 });
@@ -65,7 +103,11 @@ submitButton.addEventListener("click", async () => {
   ).map((btn) => btn.textContent);
 
   if (selectedKeywords.length !== 5) {
-    alert("5개의 키워드를 선택해주세요!");
+    alert(
+      lang === "ko"
+        ? "5개의 키워드를 선택해주세요!"
+        : "Please select 5 keywords!"
+    );
     return;
   }
 
@@ -93,8 +135,9 @@ submitButton.addEventListener("click", async () => {
   } catch (error) {
     loadingMessage.style.display = "none";
     resultMessage.textContent =
-      "메시지를 가져오는 데 실패했습니다. 다시 시도해주세요!";
-
+      lang === "ko"
+        ? "메시지를 가져오는 데 실패했습니다. 다시 시도해주세요!"
+        : "Failed to fetch the message. Please try again!";
     console.error(error);
   }
 });
