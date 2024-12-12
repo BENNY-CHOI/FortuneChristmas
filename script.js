@@ -1,6 +1,64 @@
+// 남은 날짜 표시
+const remainTime = document.querySelector("#remain-time");
+function diffDay() {
+  const masTime = new Date("2024-12-25");
+  const todayTime = new Date();
+  const diff = masTime - todayTime;
+  const diffDay = Math.ceil(diff / (1000 * 60 * 60 * 24));
+  remainTime.innerText = `크리스마스까지 D- ${diffDay}일`;
+
+  const timeToMidnight = new Date().setHours(24, 0, 0, 0) - Date.now();
+  setTimeout(() => {
+    diffDay();
+  }, timeToMidnight);
+}
+diffDay();
+const showPopupButton = document.getElementById("show-popup");
+const closePopupButton = document.getElementById("close-popup");
+const closeMessagePopupButton = document.getElementById("close-message-popup");
+const christmas = new Date(new Date().getFullYear(), 11, 25); // 12월 25일
+
+const today = new Date();
+const popup = document.getElementById("popup"); // 팝업 요소 추가
+const messagePopup = document.getElementById("message-popup");
+
+showPopupButton.addEventListener("click", () => {
+  const currentDate = new Date();
+  const todayString = `${currentDate.getFullYear()}-${
+    currentDate.getMonth() + 1
+  }-${currentDate.getDate()}`;
+  const christmasString = `${christmas.getFullYear()}-${
+    christmas.getMonth() + 1
+  }-${christmas.getDate()}`;
+
+  const isChristmas = todayString === christmasString;
+
+  // 크리스마스 날짜와 비교
+  //const isChristmas =
+  //currentDate.getMonth() === christmas.getMonth() &&
+  //currentDate.getDate() === christmas.getDate();
+
+  if (isChristmas) {
+    clickSound.currentTime = 0;
+    clickSound.play();
+    popup.style.display = "flex";
+  } else {
+    clickSound.currentTime = 0;
+    clickSound.play();
+    messagePopup.style.display = "flex";
+  }
+});
+
+closePopupButton.addEventListener("click", () => {
+  popup.style.display = "none";
+});
+
+closeMessagePopupButton.addEventListener("click", () => {
+  messagePopup.style.display = "none";
+});
+
 // 팝업창 기능
 const showPopup = document.getElementById("show-popup");
-const popup = document.getElementById("popup");
 const closePopup = document.getElementById("close-popup");
 
 // 효과음 기능
@@ -142,12 +200,12 @@ submitButton.addEventListener("click", async () => {
   }
 });
 
-showPopup.addEventListener("click", () => {
-  clickSound.currentTime = 0;
-  clickSound.play();
+// showPopup.addEventListener("click", () => {
+//   clickSound.currentTime = 0;
+//   clickSound.play();
 
-  popup.style.display = "flex";
-});
+//   popup.style.display = "flex";
+// });
 
 // 키워드와 버튼 복원 로직
 closePopup.addEventListener("click", () => {
