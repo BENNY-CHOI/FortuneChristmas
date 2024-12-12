@@ -18,12 +18,12 @@ const closePopupButton = document.getElementById("close-popup");
 const closeMessagePopupButton = document.getElementById("close-message-popup");
 const christmas = new Date(new Date().getFullYear(), 11, 25); // 12월 25일
 
-const today = new Date();
+const today = new Date(2024, 11, 25);
 const popup = document.getElementById("popup"); // 팝업 요소 추가
 const messagePopup = document.getElementById("message-popup");
 
 showPopupButton.addEventListener("click", () => {
-  const currentDate = new Date();
+  const currentDate = new Date(2024, 11, 25);
   const todayString = `${currentDate.getFullYear()}-${
     currentDate.getMonth() + 1
   }-${currentDate.getDate()}`;
