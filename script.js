@@ -5,7 +5,16 @@ function diffDay() {
   const todayTime = new Date();
   const diff = masTime - todayTime;
   const diffDay = Math.ceil(diff / (1000 * 60 * 60 * 24));
-  remainTime.innerText = `크리스마스까지 D- ${diffDay}일`;
+
+  // 언어에 따라 다른 메시지 설정
+  const lang = document.documentElement.lang;
+  if (lang === "ko") {
+    remainTime.innerText = `크리스마스까지 D- ${diffDay}일`;
+  } else if (lang === "en") {
+    remainTime.innerText = `D- ${diffDay} days until Christmas!`;
+  } else {
+    remainTime.innerText = `Christmas is in D- ${diffDay} days.`;
+  }
 
   const timeToMidnight = new Date().setHours(24, 0, 0, 0) - Date.now();
   setTimeout(() => {
@@ -32,11 +41,6 @@ showPopupButton.addEventListener("click", () => {
   }-${christmas.getDate()}`;
 
   const isChristmas = todayString === christmasString;
-
-  // 크리스마스 날짜와 비교
-  //const isChristmas =
-  //currentDate.getMonth() === christmas.getMonth() &&
-  //currentDate.getDate() === christmas.getDate();
 
   if (isChristmas) {
     clickSound.currentTime = 0;
