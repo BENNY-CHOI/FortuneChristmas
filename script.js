@@ -22,6 +22,7 @@ function diffDay() {
   }, timeToMidnight);
 }
 diffDay();
+
 const showPopupButton = document.getElementById("show-popup");
 const closePopupButton = document.getElementById("close-popup");
 const closeMessagePopupButton = document.getElementById("close-message-popup");
@@ -31,26 +32,36 @@ const today = new Date();
 const popup = document.getElementById("popup"); // 팝업 요소 추가
 const messagePopup = document.getElementById("message-popup");
 
+// showPopupButton.addEventListener("click", () => {
+//   const currentDate = new Date();
+//   const todayString = `${currentDate.getFullYear()}-${
+//     currentDate.getMonth() + 1
+//   }-${currentDate.getDate()}`;
+//   const christmasString = `${christmas.getFullYear()}-${
+//     christmas.getMonth() + 1
+//   }-${christmas.getDate()}`;
+
+//   const isChristmas = todayString === christmasString; // 12월 25일인지 확인
+
+//   if (isChristmas) {
+//     // 크리스마스인 경우에만 팝업 열기
+//     clickSound.currentTime = 0;
+//     clickSound.play();
+//     popup.style.display = "flex";
+//   } else {
+//     // 다른 날짜에는 메시지 팝업 표시
+//     clickSound.currentTime = 0;
+//     clickSound.play();
+//     messagePopup.style.display = "flex";
+//   }
+// });
+
+// 크리스마스 여부 확인 조건 제거
 showPopupButton.addEventListener("click", () => {
-  const currentDate = new Date();
-  const todayString = `${currentDate.getFullYear()}-${
-    currentDate.getMonth() + 1
-  }-${currentDate.getDate()}`;
-  const christmasString = `${christmas.getFullYear()}-${
-    christmas.getMonth() + 1
-  }-${christmas.getDate()}`;
-
-  const isChristmas = todayString === christmasString;
-
-  if (isChristmas) {
-    clickSound.currentTime = 0;
-    clickSound.play();
-    popup.style.display = "flex";
-  } else {
-    clickSound.currentTime = 0;
-    clickSound.play();
-    messagePopup.style.display = "flex";
-  }
+  // 클릭 시 팝업 열기
+  clickSound.currentTime = 0;
+  clickSound.play();
+  popup.style.display = "flex"; // 팝업을 항상 표시
 });
 
 closePopupButton.addEventListener("click", () => {
@@ -74,7 +85,7 @@ const submitButton = document.getElementById("submit-keywords");
 const loadingMessage = document.getElementById("loading-message");
 const resultMessage = document.getElementById("result-message");
 
-//키워드 리스트 (한/영 지원)
+// 키워드 리스트 (한/영 지원)
 const keywordList = {
   ko: [
     "모험심이 강한",
